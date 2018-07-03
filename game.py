@@ -23,9 +23,9 @@ def check(val):
 				if a[i+6]==val:
 					win=True
 	if a[4]==val:
-		for i in [0,2] :
+		for i in [0,2]:
 			if a[i]==val:
-				if a[i+6]==val:
+				if a[8-i]==val:
 					win=True
 	return win
 
@@ -58,22 +58,30 @@ def validate(inn):
 	else:
 		return False	
 
+
+def play(i):
+	print("Player",i,":")
+	in2=int(input("Enetr a value"))
+	if in2>=1 and in2<=9:
+		if validate(in2):
+			update(in2,i)
+			if check(i):
+				won(i)
+			if tie():
+				print("Looks like no one won :(")
+				play_again()						
+		else:
+			print("Space already occupied :(")
+			play(i)
+	else:
+		play(i)
+
 def start():
 	initialize()
 	while True:
 		for i in [1,2]:
-			print("Player",i,":")
-			in2=int(input("Enetr a value"))
-			if validate(in2):
-				update(in2,i)
-				if check(i):
-					won(i)
-				if tie():
-					print("Looks like no one won :(")
-					play_again()
-			else:
-				print("Space already occupied :(")
-				play_again()
+			play(i)
+			
 
 start()
 
