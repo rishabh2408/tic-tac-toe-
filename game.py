@@ -61,19 +61,23 @@ def validate(inn):
 
 def play(i):
 	print("Player",i,":")
-	in2=int(input("Enetr a value"))
-	if in2>=1 and in2<=9:
-		if validate(in2):
-			update(in2,i)
-			if check(i):
-				won(i)
-			if tie():
-				print("Looks like no one won :(")
-				play_again()						
+	try:
+		in2=int(input("Enetr a value"))
+		if in2>=1 and in2<=9:
+			if validate(in2):
+				update(in2,i)
+				if check(i):
+					won(i)
+				if tie():
+					print("Looks like no one won :(")
+					play_again()						
+			else:
+				print("Space already occupied :(")
+				play(i)
 		else:
-			print("Space already occupied :(")
 			play(i)
-	else:
+	except:
+		print("you entered an invalid input")
 		play(i)
 
 def start():
