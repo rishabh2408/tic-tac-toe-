@@ -1,14 +1,45 @@
 
 a=[0,0,0,0,0,0,0,0,0]
 
-"""
-def display(val):
-	
+def display():
+	countt=0
+	for j in [6,3,0]:
+		countt+=1
+		count=0
+		for i in [j,j+1,j+2]:
+			count+=1
+			if a[i]==0:
+				print("   ",end="")
+			elif a[i]==1:
+				print(" X ",end="")
+			else:
+				print(" O ",end="")
+			if count<=2:
+				print("|",end="")
+		if countt<=2:
+			print("\n-----------")
+	print("")		
 
-"""
+def layout():
+	print("*****BASIC LAYOUT FOR GAME*****\n\n")
+	countt=0
+	for j in [6,3,0]:
+		countt+=1
+		count=0
+		for i in [j,j+1,j+2]:
+			count+=1
+			print(" ",i+1," ",end="")			
+			if count<=2:
+				print("|",end="")
+		if countt<=2:
+			print("\n----------------")
+	print("\n\n")		
+	print("Player 1 entry will be shown as 'X'\nPlayer 2 entry will be shown as 'O'\n\n")
+
 def initialize():
 	for i in range(9):
 		a[i]=0
+	layout()
 
 def check(val):
 	win=False
@@ -31,7 +62,7 @@ def check(val):
 
 def update(inn,val):
 	a[inn-1]=val
-	#display(val)
+	display()
 
 def won(winner):
 	print("Player",str(winner),"won!!")
@@ -58,7 +89,6 @@ def validate(inn):
 	else:
 		return False	
 
-
 def play(i):
 	print("Player",i,":")
 	try:
@@ -75,6 +105,7 @@ def play(i):
 				print("Space already occupied :(")
 				play(i)
 		else:
+			print("Invalis input try again")
 			play(i)
 	except:
 		print("you entered an invalid input")
@@ -86,7 +117,6 @@ def start():
 		for i in [1,2]:
 			play(i)
 			
-
 start()
 
 
