@@ -1,6 +1,11 @@
-
+from os import system,name
 a=[0,0,0,0,0,0,0,0,0]
 
+def clear():
+	if name=='nt':
+		_=system('cls')
+	else:
+		_=system('clear')
 def display():
 	countt=0
 	for j in [6,3,0]:
@@ -21,7 +26,7 @@ def display():
 	print("")		
 
 def layout():
-	
+	clear()
 	print("*****BASIC LAYOUT FOR GAME*****\n\n")
 	countt=0
 	for j in [6,3,0]:
@@ -70,11 +75,11 @@ def won(winner):
 	play_again()
 
 def play_again():
-	ch=input("Want to play again")
-	if ch=='yes':
+	ch=input("Want to play again: ")
+	if ch.lower() =='yes' or ch.lower() =='y' or ch=='True' or ch=='1':
 		start()
 	else:
-		quit()
+		exit()
 
 def tie():
 	count=0
@@ -108,9 +113,12 @@ def play(i):
 		else:
 			print("Invalis input try again")
 			play(i)
-	except:
+	except SystemExit:
+		quit()
+	except ValueError:
 		print("You entered an invalid input")
 		play(i)
+	
 
 def start():
 	initialize()
