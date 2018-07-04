@@ -21,6 +21,7 @@ def display():
 	print("")		
 
 def layout():
+	
 	print("*****BASIC LAYOUT FOR GAME*****\n\n")
 	countt=0
 	for j in [6,3,0]:
@@ -108,7 +109,7 @@ def play(i):
 			print("Invalis input try again")
 			play(i)
 	except:
-		print("you entered an invalid input")
+		print("You entered an invalid input")
 		play(i)
 
 def start():
@@ -116,8 +117,9 @@ def start():
 	while True:
 		for i in [1,2]:
 			play(i)
-			
-start()
+	
+if __name__ == "__main__":             #will automatically start the game if you use this file seprately if you want to start this game from your own file just call the start() function and rest will be taken care of		
+	start()
 
 
 
